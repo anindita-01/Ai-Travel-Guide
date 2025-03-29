@@ -1,10 +1,14 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer = ({trip}) => {
   return (
-    <div>
-      
-    </div>
+   <>
+   
+ <div className='my-7 text-center text-gray-500'>
+    <h2>Created by Ai-Travel-Planner, Hope You Enjoy Your Trip!</h2>
+ </div>
+   
+   </>
   )
 }
 
