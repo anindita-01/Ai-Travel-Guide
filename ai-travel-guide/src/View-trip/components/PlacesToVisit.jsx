@@ -1,6 +1,8 @@
 // import { Button } from '@/components/ui/button';
 import React from "react";
 import { Link } from "react-router-dom";
+
+import PlacePhoto from "./PlacePhoto";
 // import { FaMapLocationDot } from "react-icons/fa6";
 
 const PlacesToVisit = ({ trip }) => {
@@ -36,13 +38,15 @@ const PlacesToVisit = ({ trip }) => {
                     >
                       <div
                         key={idx}
-                        className="border rounded-lg overflow-hidden shadow-sm hover:border-black hover:shadow-black  transition-all"
+                        className="border rounded-lg overflow-hidden shadow-sm hover:border-black hover:shadow-black w-full object-cover transition-all"
                       >
-                        <img
+                        {/* <img
                           src="/placeholder.jpg"
                           alt={activity.place_name}
                           className="w-full h-48 object-cover"
-                        />
+                        /> */}
+                        <PlacePhoto query={activity.place_name} />
+
                         <div className="p-3 flex flex-col gap-2">
                           <h4 className="font-medium">{activity.place_name}</h4>
                           <p className="text-gray-500 text-sm">

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 
 const Header = () => {
+
   return (
     <>
       <div className="p-3 shadow-sm w-full h-24 flex justify-between bg-slate-200  items-center px-5">

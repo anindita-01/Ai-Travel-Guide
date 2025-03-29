@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+
 import { AI_PROMPT, SelectTravelsList } from "@/constants/Options";
-import { GoogleMap, LoadScript, Autocomplete } from "@react-google-maps/api";
+import { LoadScript, Autocomplete } from "@react-google-maps/api";
 import { Input } from "@/components/ui/input";
 import { SelectBudgetOptions } from "@/constants/Options";
 import { Button } from "@/components/ui/button";
@@ -22,16 +23,17 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/service/firebaseConfig";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import AutocompleteInput from "@/View-trip/components/AutocompleteInput";
+
 
 const libraries = ["places"];
 
 const CreateTrip = () => {
-  const [map, setMap] = useState(null);
   const [autocomplete, setAutocomplete] = useState(null);
   const [formData, setFormData] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const handleInputChange = (name, value) => {
     setFormData({
@@ -96,8 +98,7 @@ const CreateTrip = () => {
       id: docId,
     });
     setLoading(false);
-    navigate('/view-trip/'+docId);
-
+    navigate("/view-trip/" + docId);
   };
 
   const onLoad = (autocompleteInstance) => {
@@ -106,12 +107,8 @@ const CreateTrip = () => {
 
   const onPlaceChanged = () => {
     if (autocomplete) {
-      const place2 = autocomplete.getPlace();
-      // console.log("Selected Place:", place);
-      if (place2.geometry) {
-        map.panTo(place2.geometry.location);
-        handleInputChange("location", place2.formatted_address || place2.name);
-      }
+      const place = autocomplete.getPlace();
+      handleInputChange("location", place.formatted_address || place.name);
     }
   };
 
@@ -151,39 +148,26 @@ const CreateTrip = () => {
               What is your destination?✈️
             </h2>
 
-            <LoadScript
+            {/* <LoadScript
               googleMapsApiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
               libraries={libraries}
             >
-              <GoogleMap
-                onLoad={setMap}
-                mapContainerStyle={{ width: "100%", height: "400px" }}
-                center={{ lat: 37.7749, lng: -122.4194 }}
-                zoom={12}
-              >
-                <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-                  <input
-                    type="text"
-                    placeholder="Search Places..."
-                    className=""
-                    style={{
-                      position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                      width: "240px",
-                      height: "40px",
-                      padding: "0 12px",
-                      border: "1px solid #ccc",
-                      borderRadius: "8px",
-                      fontSize: "16px",
-                    }}
-                    // onChange={(e) => {
-                    //   handleInputChange("location",e.target.value);
-                    // }}
-                  />
-                </Autocomplete>
-              </GoogleMap>
-            </LoadScript>
+              <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+                <Input
+                  type="text"
+                  placeholder="Search Destination..."
+                  onChange={(e) =>
+                    handleInputChange("location", e.target.value)
+                  }
+                  className="w-full p-3"
+                />
+              </Autocomplete>
+            </LoadScript> */}
+            <AutocompleteInput
+  onPlaceSelected={(place) => {
+    handleInputChange("location", place.formatted_address || place.name);
+  }}
+/>
           </div>
 
           <div>

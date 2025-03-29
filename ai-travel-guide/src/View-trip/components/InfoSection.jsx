@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
+
+import React, { useEffect } from "react";
 import { IoIosSend } from "react-icons/io";
+
+import PlacePhoto from "./PlacePhoto";
 
 const InfoSection = ({ trip }) => {
   return (
     <>
-      <div>
-        <img
-          src="/placeholder.jpg"
-          className="h-[340px] w-full object-cover rounded-xl"
-        />
+      <div className="w-full h-full rounded-xl object-cover overflow-hidden">
+        <PlacePhoto query={trip?.userSelection?.location} />
         <div className="flex justify-between items-center">
           <div className="my-5 flex flex-col gap-2">
             <h2 className="font-bold text-2xl">
