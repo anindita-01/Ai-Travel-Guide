@@ -25,10 +25,14 @@ const MyTrips = () => {
       where("userEmail", "==", user?.email)
     );
     const querySnapshot = await getDocs(q);
+
+    const trips = [];
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
-      setUserTrips((prevVal) => [...prevVal, doc.data()]);
+      // setUserTrips((prevVal) => [...prevVal, doc.data()]);
+      trips.push(doc.data());
     });
+    setUserTrips(trips);
   };
 
   return (

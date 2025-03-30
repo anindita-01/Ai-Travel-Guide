@@ -18,6 +18,7 @@ const Hero = () => {
       <Link to={"/create-trip"}>
         <Button>Get Started Now</Button>
       </Link>
+      <img src="/landing_page.png" className="py-10 mt-20 h-[800px] w-full"/>
     </div>
   );
 };
