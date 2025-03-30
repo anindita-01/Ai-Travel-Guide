@@ -50,7 +50,7 @@ export const chatSession = model.startChat({
   ],
 });
 
-const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
+const result =  chatSession.sendMessage("INSERT_INPUT_HERE");
 // TODO: Following code needs to be updated for client-side apps.
 const candidates = result.response.candidates;
 for (
