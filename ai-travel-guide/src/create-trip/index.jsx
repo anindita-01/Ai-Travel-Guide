@@ -25,7 +25,6 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import AutocompleteInput from "@/View-trip/components/AutocompleteInput";
 
-
 const libraries = ["places"];
 
 const CreateTrip = () => {
@@ -164,10 +163,10 @@ const CreateTrip = () => {
               </Autocomplete>
             </LoadScript> */}
             <AutocompleteInput
-  onPlaceSelected={(place) => {
-    handleInputChange("location", place.formatted_address || place.name);
-  }}
-/>
+              onPlaceSelected={(place) => {
+                handleInputChange("location", place.address || place.name);
+              }}
+            />
           </div>
 
           <div>
