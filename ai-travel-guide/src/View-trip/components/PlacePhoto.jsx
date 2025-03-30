@@ -33,7 +33,7 @@ const PlacePhoto = ({ query }) => {
     <img
       src={photoUrl || "/placeholder.jpg"}
       alt={query}
-      className="w-full h-48 object-cover"
+      className="w-full h-48 object-cover rounded-md"
     />
   );
 };

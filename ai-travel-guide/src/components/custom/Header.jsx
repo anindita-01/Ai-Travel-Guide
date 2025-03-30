@@ -56,10 +56,16 @@ const Header = () => {
         <div>
           {user ? (
             <div className="flex items-center gap-3">
-              <Button variant="outline" className="rounded-full">
-                My Trips
-              </Button>
-
+              <a href="/create-trip">
+                <Button variant="outline" className="rounded-full">
+                  +Create Trip
+                </Button>
+              </a>
+              <a href="/my-trip">
+                <Button variant="outline" className="rounded-full">
+                  My Trips
+                </Button>
+              </a>
               <Popover>
                 <PopoverTrigger>
                   <img
